@@ -1959,6 +1959,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   data: function data() {
     return {
       gamersList: [],
+      isPlaying: false,
       urlCheckUsersData: '',
       sendingRequestSync: false,
       sendingRequestAction: false,
@@ -1973,6 +1974,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this.sendingRequestSync = true;
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.urlCheckUsersData).then(function (res) {
           var data = res.data.gamers;
+          _this.isPlaying = res.data.meta.statusPlay;
 
           var _iterator = _createForOfIteratorHelper(data),
               _step;
@@ -2107,8 +2109,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserPanel",
@@ -2123,22 +2123,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       sendingRequestSync: false,
       sendingRequestAnswer: false,
       successSend: null,
-      variables: [{
-        value: 1,
-        active: false
-      }, {
-        value: 2,
-        active: false
-      }, {
-        value: 3,
-        active: false
-      }, {
-        value: 4,
-        active: false
-      }]
+      variables: [],
+      gameTypes: {}
     };
   },
   methods: {
+    getVariables: function getVariables() {
+      var variables = [];
+      var count = 0;
+
+      if (this.typeAnswer === this.gameTypes['choose']) {
+        count = 4;
+      } else if (this.typeAnswer === this.gameTypes['choose_from_two']) {
+        count = 2;
+      }
+
+      for (var i = 0; i < count; i++) {
+        variables.push({
+          value: i + 1,
+          active: false
+        });
+      }
+
+      return variables;
+    },
     checkMetaData: function checkMetaData() {
       var _this = this;
 
@@ -2210,12 +2218,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     this.urlCheckMetaData = window.pageData.urlCheckMetaData;
     this.urlSendAnswer = window.pageData.urlSendAnswer;
     this.urlLogout = window.pageData.urlLogout;
+    this.gameTypes = window.pageData.gameTypes;
     setInterval(function () {
       _this3.checkMetaData();
-    }, 500);
+    }, 1500);
   },
   watch: {
     typeAnswer: function typeAnswer() {
+      this.variables = this.getVariables();
       this.sendingRequestAnswer = false;
       this.activeModal = false;
       this.statusPlay = false;
@@ -2273,6 +2283,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ListUsers",
@@ -2286,7 +2301,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       sendingRequestSync: false,
       sendingRequestAction: false,
       typeAnswer: null,
-      statusPlay: false
+      statusPlay: false,
+      gameTypes: []
     };
   },
   methods: {
@@ -2354,12 +2370,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         });
       }
     },
-    changeTypeAnswer: function changeTypeAnswer() {
+    changeTypeAnswer: function changeTypeAnswer($event) {
       var _this3 = this;
 
       if (!this.sendingRequestAction) {
         this.sendingRequestAction = true;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.urlChangeTypeAnswer).then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.urlChangeTypeAnswer, {
+          'gameType': $event.target.value
+        }).then(function (res) {
           _this3.typeAnswer = res.data.typeAnswer;
           console.log('Тип игры успешно изменен');
         })["catch"](function (err) {
@@ -2387,6 +2405,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   mounted: function mounted() {
     var _this5 = this;
 
+    this.gameTypes = window.pageData.gameTypes;
     this.urlCheckUsersData = window.pageData.urlCheckUsersData;
     this.urlReset = window.pageData.urlReset;
     this.urlPlayPause = window.pageData.urlPlayPause;
@@ -2416,7 +2435,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     setInterval(function () {
       _this5.checkUsersData();
-    }, 1000);
+    }, 1500);
   }
 });
 
@@ -20403,7 +20422,9 @@ var render = function() {
                               "\n                    "
                           )
                         ]
-                      : _vm.typeAnswer === "choose" && gamer.is_answering
+                      : _vm.typeAnswer !== "solo" &&
+                        gamer.is_answering &&
+                        !_vm.isPlaying
                       ? [
                           _vm._v(
                             "\n                        Выбрал вариант " +
@@ -20487,7 +20508,7 @@ var render = function() {
                 [_vm._v("ВЫйТИ")]
               ),
               _vm._v(" "),
-              _vm.typeAnswer === "solo"
+              _vm.typeAnswer === _vm.gameTypes["solo"]
                 ? [
                     _c(
                       "div",
@@ -20641,16 +20662,22 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "div",
+        "select",
         {
-          staticClass: "game_button",
           on: {
-            click: function($event) {
-              return _vm.changeTypeAnswer()
+            change: function($event) {
+              return _vm.changeTypeAnswer($event)
             }
           }
         },
-        [_vm._v(_vm._s(_vm.typeAnswer))]
+        _vm._l(_vm.gameTypes, function(name, type) {
+          return _c(
+            "option",
+            { domProps: { value: type, selected: _vm.typeAnswer === type } },
+            [_vm._v("\n                " + _vm._s(name) + "\n            ")]
+          )
+        }),
+        0
       )
     ])
   ])
@@ -21379,7 +21406,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\OpenServer\domains\custom.game.eniseo.ru\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\domains\game_combo\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

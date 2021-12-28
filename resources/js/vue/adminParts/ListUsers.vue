@@ -23,7 +23,12 @@
         <div class="game_buttons">
             <div class="game_button" @click="changePlayPause()">{{ statusPlay ? 'Pause' : 'Play' }}</div>
             <div class="game_button" @click="reset()">Reset</div>
-            <div class="game_button" @click="changeTypeAnswer()">{{ typeAnswer }}</div>
+
+            <select @change="changeTypeAnswer($event)">
+                <option v-for="(name, type) in gameTypes" :value="type" :selected="typeAnswer === type">
+                    {{ name }}
+                </option>
+            </select>
         </div>
     </div>
 </template>
@@ -44,6 +49,7 @@ export default {
             sendingRequestAction: false,
             typeAnswer: null,
             statusPlay: false,
+            gameTypes: []
         }
     },
     methods: {
@@ -91,10 +97,12 @@ export default {
 
             }
         },
-        changeTypeAnswer(){
+        changeTypeAnswer($event){
             if(!this.sendingRequestAction){
                 this.sendingRequestAction = true;
-                axios.post(this.urlChangeTypeAnswer)
+                axios.post(this.urlChangeTypeAnswer, {
+                    'gameType': $event.target.value
+                })
                     .then((res) => {
                         this.typeAnswer = res.data.typeAnswer;
                         console.log('Тип игры успешно изменен');
@@ -126,6 +134,7 @@ export default {
         }
     },
     mounted() {
+        this.gameTypes = window.pageData.gameTypes;
         this.urlCheckUsersData = window.pageData.urlCheckUsersData;
         this.urlReset = window.pageData.urlReset;
         this.urlPlayPause = window.pageData.urlPlayPause;
@@ -144,7 +153,7 @@ export default {
 
         setInterval(() => {
             this.checkUsersData();
-        },1000);
+        },1500);
     }
 }
 </script>

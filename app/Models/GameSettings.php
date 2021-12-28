@@ -16,4 +16,5 @@ class GameSettings extends Model
 
     public const TYPE_SOLO = 'solo';
     public const TYPE_CHOOSE = 'choose';
+    public const TYPE_CHOOSE_FROM_TWO = 'choose_from_two';
 }

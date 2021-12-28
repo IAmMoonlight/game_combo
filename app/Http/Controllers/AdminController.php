@@ -28,8 +28,8 @@ class AdminController extends Controller
         (new AnswerService())->removeAll();
     }
 
-    public function changeTypeAnswer(): array {
-        return ['typeAnswer' => (new GameSettingsService())->switchType()];
+    public function changeTypeAnswer(Request $request): array {
+        return ['typeAnswer' => (new GameSettingsService())->switchType($request->input('gameType'))];
     }
 
     public function changePlayPause(): array {

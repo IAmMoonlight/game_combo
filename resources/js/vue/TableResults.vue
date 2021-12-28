@@ -25,7 +25,7 @@
                         <template v-if="typeAnswer === 'solo' && gamer.is_answering">
                             {{ 'Нажал первым' }}
                         </template>
-                        <template v-else-if="typeAnswer === 'choose' && gamer.is_answering" >
+                        <template v-else-if="typeAnswer !== 'solo' && gamer.is_answering && !isPlaying" >
                             Выбрал вариант {{ gamer.answering }}
                         </template>
 
@@ -47,6 +47,7 @@ export default {
     data(){
         return {
             gamersList: [],
+            isPlaying: false,
             urlCheckUsersData: '',
             sendingRequestSync: false,
             sendingRequestAction: false,
@@ -61,13 +62,13 @@ export default {
                 axios.get(this.urlCheckUsersData)
                     .then((res) => {
                         let data = res.data.gamers;
+                        this.isPlaying = res.data.meta.statusPlay;
                         for(let newDataGamer of data){
                             for(let gamer of this.gamersList){
                                 if(gamer.id === newDataGamer.id){
                                     gamer.answering = newDataGamer.answering;
                                     gamer.is_answering = newDataGamer.is_answering;
                                     gamer.score = newDataGamer.score;
-
                                 }
                             }
                         }

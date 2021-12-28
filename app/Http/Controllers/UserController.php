@@ -32,7 +32,7 @@ class UserController extends Controller
                     return ['success' => true, 'user' => Auth::user()->id];
                 }
                 break;
-            case GameSettings::TYPE_CHOOSE:
+            default:
                 $check = $answerService->checkUserAnswer($request->input('number_variable'));
                 if(is_null($check)){
                     return ['success' => false,'user' => Auth::user()->id];

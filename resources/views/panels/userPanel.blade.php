@@ -30,6 +30,11 @@
             'urlCheckMetaData': '{{ route('get-meta-data') }}',
             'urlSendAnswer': '{{ route('gamer.create-answer') }}',
             'urlLogout': '{{ route('logout') }}',
+            'gameTypes': {
+                'solo': '{{ \App\Models\GameSettings::TYPE_SOLO }}',
+                'choose': '{{ \App\Models\GameSettings::TYPE_CHOOSE }}',
+                'choose_from_two': '{{ \App\Models\GameSettings::TYPE_CHOOSE_FROM_TWO }}'
+            },
             'sounds': [
                 {
                     user: 2,

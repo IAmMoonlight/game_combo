@@ -8,7 +8,7 @@
     <script>
         window.pageData = {
             urlCheckUsersData: '{{ route('admin.check-gamers-answers') }}',
-            listGamers: {!! $listGamers !!}
+            listGamers: {!! $listGamers !!},
         }
     </script>
 @endpush

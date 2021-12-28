@@ -13,20 +13,24 @@ class GameSettingsService
         return (bool)GameSettings::first()->is_play;
     }
 
-    public function switchType(){
+    public function switchType(string $gameType){
         $result = null;
         $gameSettingsFirst = GameSettings::first();
-        if($gameSettingsFirst->type_answer == GameSettings::TYPE_CHOOSE){
-            $gameSettingsFirst->update([
-                'type_answer' => GameSettings::TYPE_SOLO
-            ]);
-            $result = GameSettings::TYPE_SOLO;
-        }else{
-            $gameSettingsFirst->update([
-                'type_answer' => GameSettings::TYPE_CHOOSE
-            ]);
-            $result = GameSettings::TYPE_CHOOSE;
-        }
+        $gameSettingsFirst->update([
+            'type_answer' => $gameType
+        ]);
+        $result = $gameType;
+//        if($gameSettingsFirst->type_answer == GameSettings::TYPE_CHOOSE){
+//            $gameSettingsFirst->update([
+//                'type_answer' => GameSettings::TYPE_SOLO
+//            ]);
+//            $result = GameSettings::TYPE_SOLO;
+//        }else{
+//            $gameSettingsFirst->update([
+//                'type_answer' => GameSettings::TYPE_CHOOSE
+//            ]);
+//            $result = GameSettings::TYPE_CHOOSE;
+//        }
         return $result;
     }
 
