@@ -1,0 +1,76 @@
+.body_form{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_wrapper{
+  box-sizing: border-box;
+  background: #fff;
+  width: 600px;
+  border-radius: 10px;
+}
+.form_title{
+  font-family: "Lilita One Rus";
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 32px;
+  color: #fff;;
+  background: @dark_pink;
+  text-shadow: #000 3px -2px 0;
+  border-radius: 10px 10px 0 0;
+}
+.form_auth{
+  padding: 40px 25px;
+}
+.input_wrapper{
+  margin-bottom: 25px;
+}
+.input_style(){
+  font-family: "Lilita One Rus";
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 18px 20px;
+  font-size: 18px;
+
+  @media screen and (max-width: 720px){
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+.input_wrapper input{
+  .input_style();
+  width: 100%;
+  background: #e6e6e6;
+  color: #000;
+  transition: all .4s;
+}
+input[type=submit]{
+  .input_style();
+  width: 100%;
+  background: @dark_pink;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: #333 1px 1px 0;
+  cursor: pointer;
+  transition: all .4s;
+  &:hover{
+    background: lighten(@dark_pink, 8%);
+  }
+}
+
+
+@media screen and (max-width: 720px){
+  .form_wrapper{
+    width: 100%;
+    margin: 0 10px;
+  }
+  .form_title {
+    padding: 16px 8px;
+    font-size: 26px;
+  }
+}

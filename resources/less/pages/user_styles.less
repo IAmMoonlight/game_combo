@@ -1,0 +1,139 @@
+.sign_out{
+  .input_style();
+  background: @dark_pink;
+  color: #fff;
+  width: 200px;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 0 6px 1px #666;
+  text-shadow: #333 1px 1px 0;
+  cursor: pointer;
+  transition: all .4s;
+  &:hover{
+    background: lighten(@dark_pink, 8%);
+  }
+}
+
+.text_event_wrapper{
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 440px;
+  padding: 30px;
+  background: #111;
+  opacity: .9;
+}
+.text_event{
+  text-align: center;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 48px;
+  font-family: "Lilita One Rus";
+}
+
+.button(){
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "Lilita One Rus";
+  cursor: pointer;
+}
+
+.user_big_button{
+  max-width: 600px;
+  .button();
+  padding: 100px;
+  margin: 50px auto;
+  background: @red;
+  color: #fff;
+  font-size: 44px;
+  transition: all .2s;
+  text-shadow: #000 3px -2px 0;
+  &:hover{
+    background: lighten(@red, 8%);
+  }
+}
+.success_send{
+  background: @green !important;
+}
+
+.user_four_buttons{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.user_little_button{
+  min-width: 45%;
+  .button();
+  padding: 90px 60px;
+  margin: 25px;
+  font-size: 28px;
+  color: #fff;
+  transition: all .2s;
+  text-shadow: #000 3px -2px 0;
+
+  &:nth-child(1){
+    background: @blue;
+    border: 5px solid @blue;
+    &:hover{
+      background: lighten(@blue, 8%);
+    }
+  }
+  &:nth-child(2){
+    background: @green;
+    border: 5px solid @green;
+    &:hover{
+      background: lighten(@green, 8%);
+    }
+  }
+  &:nth-child(3){
+    background: @yellow;
+    border: 5px solid @yellow;
+    &:hover{
+      background: lighten(@yellow, 8%);
+    }
+  }
+  &:nth-child(4){
+    background: @red;
+    border: 5px solid @red;
+    &:hover{
+      background: lighten(@red, 8%);
+    }
+  }
+}
+.choice_answer{
+  border: 5px double #333 !important;
+  box-shadow: 0 0 8px 2px #333 !important;
+}
+
+@media screen and (max-width: 1020px){
+  .user_little_button{
+    margin: 16px;
+  }
+}
+@media screen and (max-width: 720px){
+  .user_big_button{
+    max-width: 100%;
+    margin: 50px 10px;
+  }
+  .user_four_buttons{
+    flex-direction: column;
+  }
+  .user_little_button{
+    min-width: 90%;
+    margin: 6px 10px;
+    padding: 36px;
+    font-size: 24px;
+  }
+  .text_event{
+    font-size: 42px;
+  }
+}

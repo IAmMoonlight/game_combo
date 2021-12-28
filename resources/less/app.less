@@ -1,0 +1,36 @@
+@font-face {
+	font-family: "Lilita One Rus";
+	src: url("../fonts/Lilita One Rus.ttf");
+}
+
+body{
+	background: #eee;
+	margin: 0 auto;
+	padding: 0;
+}
+.hide{
+	display: none !important;
+}
+
+@green: #68aa4f;
+@red: #b11d06;
+@blue: #4f95aa;
+@yellow: #daae0d;
+@dark_pink: #58273d;
+.yellow_bg{
+	background: @yellow !important;
+}
+.red_bg{
+	background: @red !important;
+}
+.green_bg{
+	background: @green !important;
+}
+.blue_bg{
+	background: @blue !important;
+}
+
+@import "pages/form_styles";
+@import "pages/admin_styles";
+@import "pages/user_styles";
+@import "pages/progress_styles";

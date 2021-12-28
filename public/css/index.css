@@ -1,0 +1,201 @@
+body{
+    font-family: Neue Machina;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 120%;
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+
+.header-logo{
+    margin-top: 100px;
+    height: 255px;
+    width: 302px;
+}
+
+.logo{
+    position: relative;
+    background: url(svg/logo.svg) no-repeat;
+    background-size: 100%;
+    width: 400px;
+    height: 119px;
+    top: -205px;
+    left: -30px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 28px;
+}
+
+.answer-disabled{
+    width: 302px;
+    height: 75px;
+    background: url(svg/answer-disabled.svg) no-repeat;
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    justify-content: center;
+    color: #FFFFFF;
+    opacity: 0.4;
+    letter-spacing: 0.05em;
+}
+
+.answer-default{
+    width: 302px;
+    height: 75px;
+    background: url(svg/answer-default.svg) no-repeat;
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    justify-content: center;
+    color: #2F2F2F;
+    letter-spacing: 0.05em;
+}
+
+.answer-active{
+    width: 302px;
+    height: 75px;
+    background: url(svg/answer-active.svg) no-repeat;
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    justify-content: center;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.05em;
+    filter: drop-shadow(3px 6px 0px #FF585D);
+}
+
+#header{
+    position: fixed;
+    top: -40px;
+    left: -100px;
+}
+
+#footer {
+    position: fixed;
+    bottom: -70px;
+    left: -70px;
+}
+
+.process{
+    width: 414px;
+    height: 86px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.exit-btn{
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    justify-items: center;
+}
+
+.exit-btn:hover{
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.confirm-btn{
+    background: url(svg/confirm-button.svg) no-repeat;
+    background-size: cover;
+    width: 302px;
+    height: 87px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    letter-spacing: 0.05em;
+    filter: drop-shadow(3px 6px 0px #FF585D);
+}
+
+input, input:active, input:focus{
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 120%;
+    width: 80%;
+}
+
+input::placeholder{
+    font-family: Neue Machina;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-around;
+    background: url(svg/default_label.svg) no-repeat;
+    background-size: 100%;
+    width: 302px;
+    height: 77px;
+}
+
+.input-label-active{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-around;
+    background: url(svg/active_label.svg) no-repeat;
+    background-size: 100%;
+    width: 302px;
+    height: 75px;
+}
+
+.input-label-invalid{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: space-around;
+    background: url(svg/invalid_label.svg) no-repeat;
+    background-size: 100%;
+    width: 302px;
+    height: 75px;
+}
+
+.caption {
+    width: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+}
+
+
+
+

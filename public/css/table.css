@@ -1,0 +1,133 @@
+body{
+    font-family: HelveticaNeueCyr;
+    font-style: normal;
+    color: white;
+    background: url(svg/snow_bg.svg);
+    background-size: 100%;
+    z-index: -1;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    margin-top: 100px;
+    max-width: 1920px;
+    max-height: 1080px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.table-header{
+    width: 1510px;
+    height: 100px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px #FFFFFF;
+    display: grid;
+    grid-template-columns: 130px 4fr 1fr 1fr;
+    align-items: end;
+    justify-items: center;
+    justify-content: center;
+}
+
+.table-body{
+    background: url(/svg/table.svg) no-repeat;
+    background-size: 100%;
+    width: 1690px;
+    display: grid;
+    grid-gap: 24px;
+    justify-items: center;
+}
+
+.team{
+    height: 149px;
+    width: 1510px;
+    display: grid;
+    grid-template-columns: 130px 4fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    justify-content: end;
+    -webkit-mask-image: url(/svg/team.svg);
+    mask: url(/svg/team.svg);
+    font-family: HelveticaNeueCyr, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 120%;
+}
+
+.table-name{
+    background: url(/svg/table-header.svg) no-repeat;
+    font-style: normal;
+    background-size: cover;
+    width: 1690px;
+    height: 120px;
+    font-family: Neue Machina;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 120%;
+    color: #FF585D;
+    letter-spacing: 0.05em;
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+}
+
+.table-name:after{
+    position: relative;
+    content: url(/svg/table-snow-header.svg);
+    z-index: 1;
+    width: 762px;
+    height: 98px;
+    top: -40px;
+    left: 110px;
+}
+
+.team > span:nth-child(3) {
+    background: #FFFFFF;
+    color: #FF585D;
+    width: 90px;
+    height: 80px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 68px;
+    line-height: 120%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.team > span:nth-child(2), .table-header > span:nth-child(2) {
+    justify-self: start;
+    padding-left: 20px;
+}
+
+.team:last-child{
+    margin-bottom: 80px;
+}
+
+.blue{
+    background: #6372FF;
+}
+
+.pink{
+    background: #FF63AE;
+}
+
+.orange{
+    background: #FF9263;
+}
+
+.green{
+    background: #9BCB11;
+}
+
+
