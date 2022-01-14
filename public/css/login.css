@@ -1,0 +1,152 @@
+body{
+    font-family: Neue Machina;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 120%;
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.header-logo{
+    margin-top: 100px;
+    height: 255px;
+    width: 255px;
+}
+
+.logo{
+    position: relative;
+    background: url(../svg/logo.svg) no-repeat;
+    background-size: 100%;
+    width: 302px;
+    height: 86px;
+    top: -175px;
+    left: -30px;
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    gap: 28px;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-around;
+    width: 302px;
+    height: 75px;
+    background-size: cover;
+}
+
+.input-label-default{
+    background: url(../svg/default_label.svg) no-repeat;
+}
+
+.input-label-active{
+    background: url(../svg/active_label.svg) no-repeat;
+}
+
+.input-label-invalid{
+    background: url(../svg/invalid_label.svg) no-repeat;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.input-label-invalid > input{
+    position: relative;
+    bottom: 13px;
+}
+
+.input-label-invalid:after{
+    position: relative;
+    top: 15px;
+    content: "☠ Самоликвидация устройства активирована";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    text-transform: none;
+}
+
+.confirm-btn{
+    font-family: Neue Machina;
+    margin-top: 28px;
+    margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: url(../svg/confirm-button.svg) no-repeat;
+    background-size: cover;
+    width: 302px;
+    height: 87px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    filter: drop-shadow(3px 6px 0px #FF585D);
+}
+
+.confirm-btn:active{
+    width: 90%;
+    height: 60px;
+    transition: 2s;
+}
+
+
+
+
+#header{
+    position: fixed;
+    top: -40px;
+    left: -100px;
+}
+
+#footer{
+    position: fixed;
+    bottom: -70px;
+    left: -70px;
+}
+
+button, button:active{
+    border: none;
+    cursor: pointer;
+}
+
+input, input:active, input:focus{
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 120%;
+    width: 80%;
+}
+
+input::placeholder{
+    font-family: Neue Machina;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0.8;
+}

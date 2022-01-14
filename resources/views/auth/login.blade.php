@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('head')
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/liquidGradient.css') }}">
 @endpush
 
@@ -38,10 +38,10 @@
     <form method="POST" action="{{ route('login') }}"  class="auth-form">
         @csrf
 
-        <label class="input-label">
+        <label class="input-label input-label-active">
             <input type="email" placeholder="электропочта" name="email" autofocus>
         </label>
-        <label class="input-label">
+        <label class="input-label input-label-default">
             <input type="password" placeholder="пароль" name="password">
         </label>
         <button type="submit" class="confirm-btn">Подтвердить личность</button>
@@ -58,5 +58,24 @@
 
 @endsection
 @push('scripts')
+    <script>
+        window.addEventListener('load', function(){
+            let listInputs = document.querySelectorAll('.input-label');
+            for(let i = 0; i < listInputs.length; i++){
+                listInputs[i].querySelector('input').addEventListener('focus', function(){
+                    if(listInputs[i].classList.contains('input-label-default')){
+                        listInputs[i].classList.remove('input-label-default');
+                        listInputs[i].classList.add('input-label-active');
+                    }
+                });
+                listInputs[i].querySelector('input').addEventListener('blur', function(){
+                    if(listInputs[i].classList.contains('input-label-active')){
+                        listInputs[i].classList.remove('input-label-active');
+                        listInputs[i].classList.add('input-label-default');
+                    }
+                });
+            }
+        });
+    </script>
     <script src="{{ asset('js/liquidGradient.js') }}"></script>
 @endpush

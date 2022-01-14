@@ -24,7 +24,7 @@
             <div class="game_button" @click="changePlayPause()">{{ statusPlay ? 'Pause' : 'Play' }}</div>
             <div class="game_button" @click="reset()">Reset</div>
 
-            <select @change="changeTypeAnswer($event)">
+            <select class="game_button" @change="changeTypeAnswer($event)">
                 <option v-for="(name, type) in gameTypes" :value="type" :selected="typeAnswer === type">
                     {{ name }}
                 </option>
@@ -153,7 +153,7 @@ export default {
 
         setInterval(() => {
             this.checkUsersData();
-        },1500);
+        },500);
     }
 }
 </script>

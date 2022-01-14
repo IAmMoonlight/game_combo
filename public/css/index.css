@@ -91,30 +91,7 @@ body{
     left: -70px;
 }
 
-.process{
-    width: 414px;
-    height: 86px;
-    background: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-}
 
-.exit-btn{
-    cursor: pointer;
-    width: 90px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    justify-items: center;
-}
-
-.exit-btn:hover{
-    background: rgba(255, 255, 255, 0.3);
-}
 
 .confirm-btn{
     background: url(svg/confirm-button.svg) no-repeat;
@@ -161,7 +138,7 @@ input::placeholder{
     background: url(svg/default_label.svg) no-repeat;
     background-size: 100%;
     width: 302px;
-    height: 77px;
+    height: 75px;
 }
 
 .input-label-active{

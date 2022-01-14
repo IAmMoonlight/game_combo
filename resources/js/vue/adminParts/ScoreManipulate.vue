@@ -149,7 +149,7 @@ export default {
 
         setInterval(() => {
             this.checkUsersData();
-        },1000);
+        },500);
     }
 }
 </script>

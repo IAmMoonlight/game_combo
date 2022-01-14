@@ -1953,6 +1953,45 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TableResults",
@@ -2109,6 +2148,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserPanel",
@@ -2138,11 +2188,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         count = 2;
       }
 
-      for (var i = 0; i < count; i++) {
+      if (count === 2) {
         variables.push({
-          value: i + 1,
+          value: 'Рэпер',
+          sys_value: 1,
           active: false
         });
+        variables.push({
+          value: 'Поэт',
+          sys_value: 2,
+          active: false
+        });
+      } else {
+        for (var i = 0; i < count; i++) {
+          variables.push({
+            sys_value: i + 1,
+            value: 'Ответ №' + (i + 1),
+            active: false
+          });
+        }
       }
 
       return variables;
@@ -2199,7 +2263,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var item = _step.value;
 
-          if (item.value !== number) {
+          if (item.sys_value !== number) {
             item.active = false;
           } else {
             item.active = true;
@@ -2221,7 +2285,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     this.gameTypes = window.pageData.gameTypes;
     setInterval(function () {
       _this3.checkMetaData();
-    }, 1500);
+    }, 500);
   },
   watch: {
     typeAnswer: function typeAnswer() {
@@ -2435,7 +2499,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     setInterval(function () {
       _this5.checkUsersData();
-    }, 1500);
+    }, 500);
   }
 });
 
@@ -2642,7 +2706,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     setInterval(function () {
       _this4.checkUsersData();
-    }, 1000);
+    }, 500);
   }
 });
 
@@ -20373,87 +20437,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "progress_section" }, [
-    _c("div", { staticClass: "progress_title" }, [
-      _vm._v("Статус разочарования")
-    ]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "progress_content" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.gamersList, function(gamer, index) {
-          return [
-            _c(
-              "li",
-              {
-                class: {
-                  progress_block: true,
-                  red_bg: gamer.email === "red@red",
-                  yellow_bg: gamer.email === "black@black",
-                  green_bg: gamer.email === "green@green",
-                  blue_bg: gamer.email === "blue@blue"
-                }
-              },
-              [
-                _c("div", { staticClass: "progress_block__place" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(index + 1 !== 1 ? index + 1 : "♕") +
-                      "\n                "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "progress_block__username" }, [
-                  _vm._v(_vm._s(gamer.name))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "progress_block__answer" },
-                  [
-                    _vm.typeAnswer === "solo" && gamer.is_answering
-                      ? [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s("Нажал первым") +
-                              "\n                    "
-                          )
-                        ]
-                      : _vm.typeAnswer !== "solo" &&
-                        gamer.is_answering &&
-                        !_vm.isPlaying
-                      ? [
-                          _vm._v(
-                            "\n                        Выбрал вариант " +
-                              _vm._s(gamer.answering) +
-                              "\n                    "
-                          )
-                        ]
-                      : _vm._e()
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "progress_block__points" }, [
-                  _vm._v(_vm._s(gamer.score))
-                ])
-              ]
-            )
-          ]
-        })
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "result_text" }, [
-      _vm._v("Победители должны похлопать всем, ибо им случайно поддались!")
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "joke_text" }, [
-      _vm._v("Если вас не устраивают результаты, то обратитесь к адвокатам.")
+  return _c("div", { staticClass: "container" }, [
+    _c("div", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "table-body" },
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._l(_vm.gamersList, function(gamer, index) {
+            return [
+              _c(
+                "div",
+                {
+                  class: {
+                    row: true,
+                    team: true,
+                    pink: gamer.email === "red@red",
+                    orange: gamer.email === "black@black",
+                    green: gamer.email === "green@green",
+                    blue: gamer.email === "blue@blue"
+                  }
+                },
+                [
+                  _c("span", [_vm._v(_vm._s(index + 1))]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(gamer.name))]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    [
+                      _vm.typeAnswer === "solo" && gamer.is_answering
+                        ? [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s("Нажал первым") +
+                                "\n                            "
+                            )
+                          ]
+                        : _vm.typeAnswer !== "solo" &&
+                          gamer.is_answering &&
+                          !_vm.isPlaying
+                        ? [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(gamer.answering) +
+                                "\n                            "
+                            )
+                          ]
+                        : _vm._e()
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(gamer.score))])
+                ]
+              )
+            ]
+          })
+        ],
+        2
+      )
     ])
   ])
 }
@@ -20462,16 +20508,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "progress_block" }, [
-      _c("div", { staticClass: "progress_block__place" }, [_vm._v("#")]),
+    return _c("div", { staticClass: "table-name" }, [
+      _c("span", [_vm._v("Таблица результатов")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row table-header" }, [
+      _c("span", [_vm._v("N")]),
       _vm._v(" "),
-      _c("div", { staticClass: "progress_block__username" }, [
-        _vm._v("Команда")
-      ]),
+      _c("span", [_vm._v("КоМанда")]),
       _vm._v(" "),
-      _c("div", { staticClass: "progress_block__answer" }, [_vm._v("Ответ")]),
+      _c("span", [_vm._v("ответ")]),
       _vm._v(" "),
-      _c("div", { staticClass: "progress_block__points" }, [_vm._v("Очки")])
+      _c("span", [_vm._v("очки")])
     ])
   }
 ]
@@ -20496,73 +20548,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container", attrs: { id: "root" } }, [
-    _c("div", [
+  return _c(
+    "div",
+    { staticStyle: { width: "100%", "text-align": "center" } },
+    [
       _vm.typeAnswer !== null
-        ? _c(
-            "div",
-            [
-              _c(
-                "a",
-                { staticClass: "exit-btn", attrs: { href: _vm.urlLogout } },
-                [_vm._v("ВЫйТИ")]
-              ),
-              _vm._v(" "),
-              _vm.typeAnswer === _vm.gameTypes["solo"]
-                ? [
-                    _c(
-                      "div",
-                      {
-                        class: {
-                          user_big_button: true,
-                          success_send: _vm.successSend
-                        },
-                        on: {
-                          click: function($event) {
-                            return _vm.sendAnswer()
-                          }
-                        }
+        ? [
+            _vm.typeAnswer === _vm.gameTypes["solo"]
+              ? [
+                  _c(
+                    "div",
+                    {
+                      class: {
+                        user_big_button: true,
+                        success_send: _vm.successSend
                       },
-                      [_vm._v("Click")]
-                    ),
-                    _vm._v(" "),
-                    _vm.successSend === false
-                      ? _c("div", { staticClass: "text_event_wrapper" }, [
-                          _c("div", { staticClass: "text_event" }, [
-                            _vm._v("Кто не успел, тот опоздал!")
-                          ])
+                      on: {
+                        click: function($event) {
+                          return _vm.sendAnswer()
+                        }
+                      }
+                    },
+                    [_vm._v("Click")]
+                  ),
+                  _vm._v(" "),
+                  _vm.successSend === false
+                    ? _c("div", { staticClass: "text_event_wrapper" }, [
+                        _c("div", { staticClass: "text_event" }, [
+                          _vm._v("Кто не успел, тот опоздал!")
                         ])
-                      : _vm._e()
-                  ]
-                : [
-                    _c("div", { staticClass: "process" }, [
-                      _vm._v("Приём вариантов...")
-                    ]),
-                    _vm._v(" "),
+                      ])
+                    : _vm._e()
+                ]
+              : [
+                  _c(
+                    "div",
+                    {
+                      class: {
+                        process: true,
+                        "process-active": _vm.statusPlay
+                      }
+                    },
+                    [
+                      _vm.statusPlay
+                        ? [_c("span", [_vm._v(" Идёт приём вариантов")])]
+                        : [
+                            _vm._v(
+                              "\n                    Руки прочь от экрана\n                "
+                            )
+                          ]
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "answers" },
                     _vm._l(_vm.variables, function(item) {
                       return _c(
                         "div",
                         {
                           class: {
-                            "answer-default": !item.active,
+                            answer: true,
                             "answer-active": item.active
                           },
+                          attrs: { "data-answer": item.sys_value },
                           on: {
                             click: function($event) {
-                              return _vm.sendAnswer(item.value)
+                              return _vm.sendAnswer(item.sys_value)
                             }
                           }
                         },
                         [_vm._v(_vm._s(item.value))]
                       )
-                    })
-                  ]
-            ],
-            2
-          )
+                    }),
+                    0
+                  )
+                ]
+          ]
         : _vm._e()
-    ])
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20664,6 +20731,7 @@ var render = function() {
       _c(
         "select",
         {
+          staticClass: "game_button",
           on: {
             change: function($event) {
               return _vm.changeTypeAnswer($event)

@@ -23,7 +23,6 @@ Route::get('logout', function(){
 });
 
 Route::get('/', function () {
-    dd(\Illuminate\Support\Facades\Hash::make('ewqewqewq'));
 })->name('home');
 
 Route::group(['prefix' => 'admin','as' => 'admin.', 'middleware' => ['isAdmin']], function(){

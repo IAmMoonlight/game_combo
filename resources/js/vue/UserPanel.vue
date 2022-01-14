@@ -1,28 +1,39 @@
 <template>
-    <div id="root" class="container">
+    <div style="width: 100%; text-align: center">
+        <template v-if="typeAnswer !== null">
 
-        <div>
-            <div v-if="typeAnswer !== null">
-                <a :href="urlLogout" class="exit-btn">ВЫйТИ</a>
 
-                <template v-if="typeAnswer === gameTypes['solo']">
-                    <div @click="sendAnswer()"
-                         :class="{'user_big_button': true, 'success_send': successSend}">Click</div>
-                    <div class="text_event_wrapper" v-if="successSend === false">
-                        <div class="text_event">Кто не успел, тот опоздал!</div>
-                    </div>
-                </template>
-                <template v-else>
-                    <div class="process">Приём вариантов...</div>
-                        <div v-for="item of variables"
-                             :class="{
-                                'answer-default': !item.active,
-                                'answer-active': item.active,
-                            }"
-                             @click="sendAnswer(item.value)">{{ item.value }}</div>
-                </template>
-            </div>
-        </div>
+            <template v-if="typeAnswer === gameTypes['solo']">
+                <div @click="sendAnswer()"
+                     :class="{'user_big_button': true, 'success_send': successSend}">Click</div>
+                <div class="text_event_wrapper" v-if="successSend === false">
+                    <div class="text_event">Кто не успел, тот опоздал!</div>
+                </div>
+            </template>
+            <template v-else>
+                <div :class="{
+                    'process': true,
+                    'process-active': statusPlay
+                }">
+
+                    <template v-if="statusPlay">
+                        <span> Идёт приём вариантов</span>
+                    </template>
+                    <template v-else>
+                        Руки прочь от экрана
+                    </template>
+
+                </div>
+                <div class="answers">
+                    <div v-for="item of variables"
+                         :class="{
+                            'answer': true,
+                            'answer-active': item.active,
+                        }"
+                         @click="sendAnswer(item.sys_value)" :data-answer="item.sys_value">{{ item.value }}</div>
+                </div>
+            </template>
+        </template>
     </div>
 </template>
 
@@ -54,12 +65,27 @@ export default {
             }else if(this.typeAnswer === this.gameTypes['choose_from_two']){
                 count = 2;
             }
-            for(let i = 0; i < count; i++){
+            if(count === 2){
                 variables.push({
-                    value: i + 1,
+                    value: 'Рэпер',
+                    sys_value: 1,
                     active: false
-                },);
+                });
+                variables.push({
+                    value: 'Поэт',
+                    sys_value: 2,
+                    active: false
+                });
+            }else{
+                for(let i = 0; i < count; i++){
+                    variables.push({
+                        sys_value: i + 1,
+                        value: 'Ответ №' + (i + 1),
+                        active: false
+                    },);
+                }
             }
+
 
             return variables;
         },
@@ -108,7 +134,7 @@ export default {
         },
         activateValue(number){
             for(let item of this.variables){
-                if(item.value !== number){
+                if(item.sys_value !== number){
                     item.active = false;
                 }else{
                     item.active = true;
@@ -124,7 +150,7 @@ export default {
 
         setInterval(() => {
             this.checkMetaData();
-        },1500);
+        },500);
     },
     watch: {
         typeAnswer(){
